@@ -12,7 +12,7 @@ class Api{
   }
 
   _request(url, options) {
-    return fetch(url, options).then(this._getJson);
+    return fetch(url, options).then(this._getJson).then((res) => res.data);
   }
 
   getUserInfo() {
@@ -85,6 +85,10 @@ class Api{
         })
       }
     )
+  }
+
+  setToken(token) {
+    this._headers = { ...this._headers, authorization: `Bearer ${token}` };
   }
 }
 

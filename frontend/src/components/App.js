@@ -50,6 +50,7 @@ function App() {
     auth
       .getUserData(token)
       .then((res) => {
+        api.setToken(token);
         setIsLoggedIn(true);
         setUserData(res.data.email);
         navigate("/");
@@ -59,16 +60,15 @@ function App() {
   }, [token, navigate])
 
   useEffect(() => {
-    api.getUserInfo()
-      .then(data => setCurrentUser(data))
+    if (isLoggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, cards]) => {
+        setCurrentUser(userData);
+        setCards(cards);
+      })
       .catch(console.error)
-  }, [])
-
-  useEffect(() => {
-    api.getInitialCards()
-      .then(data => setCards(data))
-      .catch(console.error)
-  }, [])
+    }
+  }, [isLoggedIn])
 
   function registerUser({password, email}) {
     auth
@@ -96,6 +96,7 @@ function App() {
     .then((res) => {
       setUserData(email);
       setIsLoggedIn(true);
+      api.setToken(res.token);
       localStorage.setItem("jwt", res.token);
       navigate("/");
     })
