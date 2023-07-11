@@ -89,9 +89,8 @@ class Api{
 }
 
 const api = new Api({
-  baseUrl: 'https://nomoreparties.co/v1/cohort-61',
+  baseUrl: 'http://api.valeriari.mesto.nomoredomains.work',
   headers: {
-    authorization: 'dc4e7a03-585d-4419-af57-53fac49f94a8',
     'Content-Type': 'application/json'
   }
 }); 
