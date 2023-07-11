@@ -1,3 +1,5 @@
+import { BASE_URL } from "./auth";
+
 class Api{
   constructor({baseUrl, headers}) {
     this._url = baseUrl;
@@ -93,7 +95,7 @@ class Api{
 }
 
 const api = new Api({
-  baseUrl: 'http://api.valeriari.mesto.nomoredomains.work',
+  baseUrl: BASE_URL,
   headers: {
     'Content-Type': 'application/json'
   }

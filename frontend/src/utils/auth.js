@@ -1,4 +1,4 @@
-export const BASE_URL = "http://api.valeriari.mesto.nomoredomains.work";
+export const BASE_URL = "https://api.valeriari.mesto.nomoredomains.work";
 
 const makeRequest = (url, method, body, token) => {
   const options = {
