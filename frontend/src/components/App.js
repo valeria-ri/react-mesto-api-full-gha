@@ -64,7 +64,7 @@ function App() {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, cards]) => {
         setCurrentUser(userData);
-        setCards(cards);
+        setCards(cards.reverse());
       })
       .catch(console.error)
     }
@@ -74,7 +74,7 @@ function App() {
     auth
     .register(password, email)
     .then((res) => {
-      setUserData(res.data.email);
+      setUserData(res.email);
       setMessage({
         imgPath: successTooltip,
         title: "Вы успешно зарегистрировались!",
