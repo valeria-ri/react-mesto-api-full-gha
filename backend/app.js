@@ -27,10 +27,12 @@ app.get('/crash-test', () => {
 
 app.use(router);
 
+app.use('*', (req, res, next) => next(new NotFoundError('Задан неправильный путь')));
+
 app.use(errorLogger);
 
 app.use(errors());
-app.use('*', (req, res, next) => next(new NotFoundError('Задан неправильный путь')));
+
 app.use(internalServerErrorHandler);
 
 app.listen(PORT);
