@@ -7,7 +7,7 @@ const { NotFoundError } = require('./errors/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const internalServerErrorHandler = require('./middlewares/internalServerErrorHandler');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const app = express();
 
